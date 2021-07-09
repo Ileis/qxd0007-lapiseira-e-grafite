@@ -1,8 +1,6 @@
-public class Grafite {
+public class Grafite{
 
-
-
-    public enum Dureza {
+    public enum Dureza{
         G_HB,
         G_2B,
         G_4B,
@@ -10,27 +8,57 @@ public class Grafite {
 
     }
 
+    private float calibre;
+    private Dureza dureza;
+    private int tamanho;
 
-    public Grafite(float calibre, Dureza dureza, int tamanho) {
+    public Grafite(float calibre, Dureza dureza, int tamanho){
+        this.calibre = calibre;
+        this.dureza = dureza;
+        this.tamanho = tamanho;
     }
 
-    public int desgastePorFolha() {
-        return -1;
+    public int desgastePorFolha(){
+        switch(this.dureza){
+            case G_HB:
+                return 1;
+
+            case G_2B:
+                return 2;
+
+            case G_4B:
+                return 4;
+
+            case G_6B:
+                return 6;
+
+            default:
+                return 0;
+        }
     }
 
-    public Dureza getDureza() {
-        return null;
+    public Dureza getDureza(){
+        return dureza;
     }
 
-    public float getCalibre() {
-        return -1f;
+    public float getCalibre(){
+        return calibre;
     }
 
-    public int getTamanho() {
-        return -1;
+    public int getTamanho(){
+        return tamanho;
     }
 
-    public void setTamanho(int tamanho) { }
+    public void setTamanho(int tamanho){
+        this.tamanho -= tamanho;
+    }
 
-
+    @Override
+    public String toString(){
+        return "Grafite{" +
+                "calibre=" + calibre +
+                ", dureza=" + dureza +
+                ", tamanho=" + tamanho +
+                '}';
+    }
 }
